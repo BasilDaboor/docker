@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Documentation for Beginners</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Docker Documentation</h1>
+            <p class="subtitle">A Complete Beginner's Guide to Docker</p>
+        </div>
+    </header>
+
+    <nav class="sidebar">
+        <ul>
+            <li><a href="#what-is-docker">What is Docker?</a></li>
+            <li><a href="#how-docker-works">How Docker Works</a></li>
+            <li><a href="#getting-started">Getting Started</a></li>
+            <li><a href="#running-images">Running Images</a></li>
+            <li><a href="#building-images">Building Images</a></li>
+            <li><a href="#docker-hub">Docker Hub</a></li>
+            <li><a href="#common-commands">Common Commands</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <div class="container">
+            <section id="what-is-docker" class="section">
+                <h2>What is Docker?</h2>
+                <p>Docker is a platform that uses containerization technology to package applications and their dependencies into lightweight, portable containers. Think of a container as a box that contains everything your application needs to run: code, runtime, system tools, libraries, and settings.</p>
+                
+                <div class="highlight-box">
+                    <h3>Key Benefits:</h3>
+                    <ul>
+                        <li><strong>Consistency:</strong> Runs the same way on any machine</li>
+                        <li><strong>Efficiency:</strong> Uses fewer resources than virtual machines</li>
+                        <li><strong>Portability:</strong> Move applications easily between environments</li>
+                        <li><strong>Scalability:</strong> Easy to scale applications up or down</li>
+                    </ul>
+                </div>
+
+                <div class="analogy">
+                    <h3>Real-World Analogy</h3>
+                    <p>Imagine Docker containers like shipping containers. Just as shipping containers can hold different goods but all fit on the same ship, Docker containers can hold different applications but all run on the same host system.</p>
+                </div>
+            </section>
+
+            <section id="how-docker-works" class="section">
+                <h2>How Docker Works</h2>
+                <p>Docker uses a client-server architecture with three main components:</p>
+                
+                <div class="components">
+                    <div class="component">
+                        <h3>Docker Engine</h3>
+                        <p>The core runtime that manages containers on your system</p>
+                    </div>
+                    <div class="component">
+                        <h3>Docker Images</h3>
+                        <p>Read-only templates used to create containers (like blueprints)</p>
+                    </div>
+                    <div class="component">
+                        <h3>Docker Containers</h3>
+                        <p>Running instances of Docker images (like actual buildings from blueprints)</p>
+                    </div>
+                </div>
+
+                <div class="workflow">
+                    <h3>Basic Workflow</h3>
+                    <ol>
+                        <li>Create or download a Docker image</li>
+                        <li>Run the image to create a container</li>
+                        <li>The container runs your application</li>
+                        <li>Stop, start, or remove containers as needed</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section id="getting-started" class="section">
+                <h2>Getting Started with Docker</h2>
+                
+                <h3>Installation</h3>
+                <p>Download Docker Desktop from the official website for your operating system:</p>
+                <ul>
+                    <li><strong>Windows/Mac:</strong> Docker Desktop provides a user-friendly interface</li>
+                    <li><strong>Linux:</strong> Install Docker Engine directly</li>
+                </ul>
+
+                <h3>Verify Installation</h3>
+                <div class="code-block">
+                    <code>docker --version</code>
+                </div>
+
+                <h3>Test Your Installation</h3>
+                <p>Run the famous "Hello World" container:</p>
+                <div class="code-block">
+                    <code>docker run hello-world</code>
+                </div>
+                <p>This command downloads and runs a simple test container that prints a welcome message.</p>
+            </section>
+
+            <section id="running-images" class="section">
+                <h2>Running Docker Images</h2>
+                
+                <h3>Basic Run Command</h3>
+                <div class="code-block">
+                    <code>docker run [OPTIONS] IMAGE [COMMAND]</code>
+                </div>
+
+                <h3>Common Examples</h3>
+                
+                <div class="example">
+                    <h4>Run Ubuntu Container</h4>
+                    <div class="code-block">
+                        <code>docker run -it ubuntu bash</code>
+                    </div>
+                    <p><code>-it</code> makes the container interactive with a terminal</p>
+                </div>
+
+                <div class="example">
+                    <h4>Run Web Server (Nginx)</h4>
+                    <div class="code-block">
+                        <code>docker run -d -p 8080:80 nginx</code>
+                    </div>
+                    <p><code>-d</code> runs in background, <code>-p 8080:80</code> maps port 8080 to container's port 80</p>
+                </div>
+
+                <div class="example">
+                    <h4>Run with Volume Mount</h4>
+                    <div class="code-block">
+                        <code>docker run -v /host/path:/container/path image-name</code>
+                    </div>
+                    <p>Mounts a directory from your host into the container</p>
+                </div>
+
+                <h3>Useful Run Options</h3>
+                <div class="options-table">
+                    <table>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                        </tr>
+                        <tr>
+                            <td><code>-d</code></td>
+                            <td>Run in detached mode (background)</td>
+                        </tr>
+                        <tr>
+                            <td><code>-p</code></td>
+                            <td>Port mapping (host:container)</td>
+                        </tr>
+                        <tr>
+                            <td><code>-v</code></td>
+                            <td>Volume mounting</td>
+                        </tr>
+                        <tr>
+                            <td><code>--name</code></td>
+                            <td>Give container a custom name</td>
+                        </tr>
+                        <tr>
+                            <td><code>--rm</code></td>
+                            <td>Remove container when it stops</td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+
+            <section id="building-images" class="section">
+                <h2>Building Docker Images</h2>
+                
+                <h3>Dockerfile</h3>
+                <p>A Dockerfile is a text file containing instructions to build a Docker image. It's like a recipe for your container.</p>
+
+                <h3>Sample Dockerfile</h3>
+                <div class="code-block">
+<code># Use official Node.js runtime as base image
+FROM node:16
+
+# Set working directory in container
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy application code
+COPY . .
+
+# Expose port 3000
+EXPOSE 3000
+
+# Command to run when container starts
+CMD ["npm", "start"]</code>
+                </div>
+
+                <h3>Build the Image</h3>
+                <div class="code-block">
+                    <code>docker build -t my-app:latest .</code>
+                </div>
+                <p><code>-t</code> tags the image with a name, <code>.</code> refers to current directory</p>
+
+                <h3>Common Dockerfile Instructions</h3>
+                <div class="dockerfile-instructions">
+                    <div class="instruction">
+                        <strong>FROM:</strong> Specifies base image
+                    </div>
+                    <div class="instruction">
+                        <strong>WORKDIR:</strong> Sets working directory
+                    </div>
+                    <div class="instruction">
+                        <strong>COPY:</strong> Copies files from host to container
+                    </div>
+                    <div class="instruction">
+                        <strong>RUN:</strong> Executes commands during build
+                    </div>
+                    <div class="instruction">
+                        <strong>EXPOSE:</strong> Documents which ports the container uses
+                    </div>
+                    <div class="instruction">
+                        <strong>CMD:</strong> Default command when container starts
+                    </div>
+                </div>
+            </section>
+
+            <section id="docker-hub" class="section">
+                <h2>Docker Hub: Push and Pull Images</h2>
+                
+                <h3>What is Docker Hub?</h3>
+                <p>Docker Hub is a cloud-based registry service where you can store and share Docker images. It's like GitHub for Docker images.</p>
+
+                <h3>Creating an Account</h3>
+                <ol>
+                    <li>Go to <strong>hub.docker.com</strong></li>
+                    <li>Sign up for a free account</li>
+                    <li>Verify your email address</li>
+                </ol>
+
+                <h3>Login from Command Line</h3>
+                <div class="code-block">
+                    <code>docker login</code>
+                </div>
+                <p>Enter your Docker Hub username and password when prompted.</p>
+
+                <h3>Tagging Images for Docker Hub</h3>
+                <div class="code-block">
+                    <code>docker tag my-app:latest username/my-app:latest</code>
+                </div>
+                <p>Replace <code>username</code> with your Docker Hub username.</p>
+
+                <h3>Push Image to Docker Hub</h3>
+                <div class="code-block">
+                    <code>docker push username/my-app:latest</code>
+                </div>
+
+                <h3>Pull Image from Docker Hub</h3>
+                <div class="code-block">
+                    <code>docker pull username/my-app:latest</code>
+                </div>
+
+                <div class="tip">
+                    <h4>Pro Tip:</h4>
+                    <p>Use meaningful tags like <code>v1.0</code>, <code>production</code>, or <code>staging</code> instead of just <code>latest</code> for better version control.</p>
+                </div>
+            </section>
+
+            <section id="common-commands" class="section">
+                <h2>Common Docker Commands</h2>
+                
+                <div class="command-category">
+                    <h3>Image Commands</h3>
+                    <div class="command-list">
+                        <div class="command">
+                            <code>docker images</code>
+                            <span>List all images</span>
+                        </div>
+                        <div class="command">
+                            <code>docker pull image-name</code>
+                            <span>Download an image</span>
+                        </div>
+                        <div class="command">
+                            <code>docker rmi image-name</code>
+                            <span>Remove an image</span>
+                        </div>
+                        <div class="command">
+                            <code>docker build -t name .</code>
+                            <span>Build image from Dockerfile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-category">
+                    <h3>Container Commands</h3>
+                    <div class="command-list">
+                        <div class="command">
+                            <code>docker ps</code>
+                            <span>List running containers</span>
+                        </div>
+                        <div class="command">
+                            <code>docker ps -a</code>
+                            <span>List all containers</span>
+                        </div>
+                        <div class="command">
+                            <code>docker stop container-id</code>
+                            <span>Stop a container</span>
+                        </div>
+                        <div class="command">
+                            <code>docker start container-id</code>
+                            <span>Start a stopped container</span>
+                        </div>
+                        <div class="command">
+                            <code>docker rm container-id</code>
+                            <span>Remove a container</span>
+                        </div>
+                        <div class="command">
+                            <code>docker exec -it container-id bash</code>
+                            <span>Access running container</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-category">
+                    <h3>System Commands</h3>
+                    <div class="command-list">
+                        <div class="command">
+                            <code>docker system prune</code>
+                            <span>Clean up unused resources</span>
+                        </div>
+                        <div class="command">
+                            <code>docker logs container-id</code>
+                            <span>View container logs</span>
+                        </div>
+                        <div class="command">
+                            <code>docker info</code>
+                            <span>Display system information</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-steps">
+                <h2>Next Steps</h2>
+                <p>Now that you understand the basics of Docker, here are some things to explore:</p>
+                <ul>
+                    <li>Learn about Docker Compose for multi-container applications</li>
+                    <li>Explore Docker networking and volumes</li>
+                    <li>Study container orchestration with Kubernetes</li>
+                    <li>Practice with different types of applications</li>
+                    <li>Learn about Docker security best practices</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Docker Documentation. This guide is designed to help beginners get started with Docker.</p>
+        </div>
+    </footer>
+</body>
+</html>
