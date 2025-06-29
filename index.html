@@ -3,361 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Docker Documentation for Beginners</title>
+    <title>Docker for Beginners - Complete Guide</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Docker Documentation</h1>
-            <p class="subtitle">A Complete Beginner's Guide to Docker</p>
-        </div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>🐳 Docker for Beginners</h1>
+            <p class="subtitle">A Complete Guide to Understanding and Using Docker</p>
+        </header>
 
-    <nav class="sidebar">
-        <ul>
-            <li><a href="#what-is-docker">What is Docker?</a></li>
-            <li><a href="#how-docker-works">How Docker Works</a></li>
-            <li><a href="#getting-started">Getting Started</a></li>
-            <li><a href="#running-images">Running Images</a></li>
-            <li><a href="#building-images">Building Images</a></li>
-            <li><a href="#docker-hub">Docker Hub</a></li>
-            <li><a href="#common-commands">Common Commands</a></li>
-        </ul>
-    </nav>
+        <nav class="table-of-contents">
+            <h2>📋 Table of Contents</h2>
+            <ul>
+                <li><a href="#what-is-docker">What is Docker?</a></li>
+                <li><a href="#why-use-docker">Why Use Docker?</a></li>
+                <li><a href="#basic-terminology">Basic Docker Terminology</a></li>
+                <li><a href="#how-docker-works">How Docker Works</a></li>
+                <li><a href="#images-vs-containers">Images vs Containers</a></li>
+                <li><a href="#getting-started">Getting Started with Docker</a></li>
+                <li><a href="#dockerfile-example">Real-World Example: Angular App</a></li>
+                <li><a href="#docker-hub">Sharing on Docker Hub</a></li>
+                <li><a href="#next-steps">Next Steps</a></li>
+            </ul>
+        </nav>
 
-    <main class="content">
-        <div class="container">
-            <section id="what-is-docker" class="section">
-                <h2>What is Docker?</h2>
-                <p>Docker is a platform that uses containerization technology to package applications and their dependencies into lightweight, portable containers. Think of a container as a box that contains everything your application needs to run: code, runtime, system tools, libraries, and settings.</p>
+        <section id="what-is-docker" class="section">
+            <h2>🤔 What is Docker?</h2>
+            <div class="content-box">
+                <p>Docker is like a <strong>shipping container for your applications</strong>. Just like how shipping containers can carry different goods but fit on any ship, Docker containers can hold your applications and run on any computer that has Docker installed.</p>
                 
-                <div class="highlight-box">
-                    <h3>Key Benefits:</h3>
-                    <ul>
-                        <li><strong>Consistency:</strong> Runs the same way on any machine</li>
-                        <li><strong>Efficiency:</strong> Uses fewer resources than virtual machines</li>
-                        <li><strong>Portability:</strong> Move applications easily between environments</li>
-                        <li><strong>Scalability:</strong> Easy to scale applications up or down</li>
-                    </ul>
+                <div class="analogy-box">
+                    <h3>🚢 Real-World Analogy</h3>
+                    <p>Imagine you're moving to a new house. Instead of packing each item separately, you put everything in standardized boxes. These boxes can be loaded onto any moving truck, regardless of the truck's brand or size. Docker works the same way - it packages your application with everything it needs into a "container" that can run anywhere.</p>
                 </div>
+            </div>
+        </section>
 
-                <div class="analogy">
-                    <h3>Real-World Analogy</h3>
-                    <p>Imagine Docker containers like shipping containers. Just as shipping containers can hold different goods but all fit on the same ship, Docker containers can hold different applications but all run on the same host system.</p>
+        <section id="why-use-docker" class="section">
+            <h2>💡 Why Use Docker?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>🔧 Consistency</h3>
+                    <p>"It works on my machine" becomes "It works everywhere!" Your app runs the same way on your laptop, your colleague's computer, and production servers.</p>
                 </div>
-            </section>
+                <div class="benefit-card">
+                    <h3>⚡ Easy Setup</h3>
+                    <p>No more complex installation guides. Just run one command, and your application is ready to go with all its dependencies.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🔄 Isolation</h3>
+                    <p>Each application runs in its own container, so they don't interfere with each other. Like having separate apartments in a building.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>📦 Portability</h3>
+                    <p>Move your application between development, testing, and production environments without worrying about compatibility issues.</p>
+                </div>
+            </div>
+        </section>
 
-            <section id="how-docker-works" class="section">
-                <h2>How Docker Works</h2>
-                <p>Docker uses a client-server architecture with three main components:</p>
+        <section id="basic-terminology" class="section">
+            <h2>📚 Basic Docker Terminology</h2>
+            <div class="terminology-list">
+                <div class="term-item">
+                    <h3>🏗️ Dockerfile</h3>
+                    <p>A recipe file that tells Docker how to build your application. Like a cooking recipe with step-by-step instructions.</p>
+                </div>
+                <div class="term-item">
+                    <h3>📸 Image</h3>
+                    <p>A snapshot or template of your application. Think of it as a blueprint or a photo that can't be changed.</p>
+                </div>
+                <div class="term-item">
+                    <h3>📦 Container</h3>
+                    <p>A running instance of an image. Like the difference between a house blueprint (image) and an actual house you live in (container).</p>
+                </div>
+                <div class="term-item">
+                    <h3>🏪 Docker Hub</h3>
+                    <p>A cloud-based library where you can find and share Docker images. Like an app store for Docker containers.</p>
+                </div>
+                <div class="term-item">
+                    <h3>🚢 Registry</h3>
+                    <p>A place to store and distribute Docker images. Docker Hub is the most popular public registry.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-docker-works" class="section">
+            <h2>⚙️ How Docker Works</h2>
+            <div class="content-box">
+                <div class="workflow-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Create a Dockerfile</h3>
+                            <p>Write instructions for building your application</p>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Build an Image</h3>
+                            <p>Docker follows your Dockerfile to create a template</p>
+                        </div>
+                    </div>
+                    <div class="arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Run a Container</h3>
+                            <p>Start your application using the image</p>
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="components">
-                    <div class="component">
-                        <h3>Docker Engine</h3>
-                        <p>The core runtime that manages containers on your system</p>
+                <div class="architecture-box">
+                    <h3>🏗️ Docker Architecture</h3>
+                    <p>Docker uses a client-server architecture. The Docker client talks to the Docker daemon, which builds, runs, and manages your containers. It's like having a construction foreman (daemon) who follows blueprints (images) to build houses (containers).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="images-vs-containers" class="section">
+            <h2>🖼️ Images vs Containers</h2>
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div class="comparison-col">
+                        <h3>📸 Docker Image</h3>
                     </div>
-                    <div class="component">
-                        <h3>Docker Images</h3>
-                        <p>Read-only templates used to create containers (like blueprints)</p>
-                    </div>
-                    <div class="component">
-                        <h3>Docker Containers</h3>
-                        <p>Running instances of Docker images (like actual buildings from blueprints)</p>
+                    <div class="comparison-col">
+                        <h3>📦 Docker Container</h3>
                     </div>
                 </div>
-
-                <div class="workflow">
-                    <h3>Basic Workflow</h3>
-                    <ol>
-                        <li>Create or download a Docker image</li>
-                        <li>Run the image to create a container</li>
-                        <li>The container runs your application</li>
-                        <li>Stop, start, or remove containers as needed</li>
-                    </ol>
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <p><strong>Static blueprint</strong> - like a recipe or template</p>
+                    </div>
+                    <div class="comparison-col">
+                        <p><strong>Running instance</strong> - like the actual cooked meal</p>
+                    </div>
                 </div>
-            </section>
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <p><strong>Read-only</strong> - cannot be changed once built</p>
+                    </div>
+                    <div class="comparison-col">
+                        <p><strong>Read-write</strong> - can be modified while running</p>
+                    </div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <p><strong>Shareable</strong> - can be uploaded to Docker Hub</p>
+                    </div>
+                    <div class="comparison-col">
+                        <p><strong>Temporary</strong> - exists only while running</p>
+                    </div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-col">
+                        <p><strong>One image</strong> can create multiple containers</p>
+                    </div>
+                    <div class="comparison-col">
+                        <p><strong>Each container</strong> runs independently</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <section id="getting-started" class="section">
-                <h2>Getting Started with Docker</h2>
+        <section id="getting-started" class="section">
+            <h2>🚀 Getting Started with Docker</h2>
+            <div class="content-box">
+                <h3>📥 Installation</h3>
+                <p>First, install Docker Desktop from <a href="https://www.docker.com/products/docker-desktop" target="_blank">docker.com</a>. It's available for Windows, Mac, and Linux.</p>
                 
-                <h3>Installation</h3>
-                <p>Download Docker Desktop from the official website for your operating system:</p>
-                <ul>
-                    <li><strong>Windows/Mac:</strong> Docker Desktop provides a user-friendly interface</li>
-                    <li><strong>Linux:</strong> Install Docker Engine directly</li>
-                </ul>
-
-                <h3>Verify Installation</h3>
+                <h3>✅ Verify Installation</h3>
                 <div class="code-block">
                     <code>docker --version</code>
                 </div>
-
-                <h3>Test Your Installation</h3>
-                <p>Run the famous "Hello World" container:</p>
+                
+                <h3>🏃‍♂️ Your First Container</h3>
+                <p>Let's run a simple "Hello World" container:</p>
                 <div class="code-block">
                     <code>docker run hello-world</code>
                 </div>
-                <p>This command downloads and runs a simple test container that prints a welcome message.</p>
-            </section>
+                <p>This command downloads a small test image and runs it. If you see a "Hello from Docker!" message, you're all set!</p>
+            </div>
+        </section>
 
-            <section id="running-images" class="section">
-                <h2>Running Docker Images</h2>
+        <section id="dockerfile-example" class="section">
+            <h2>🏗️ Real-World Example: Angular App</h2>
+            <div class="content-box">
+                <p>Let's break down the Angular application Dockerfile you created. This is a great example of a <strong>multi-stage build</strong>:</p>
                 
-                <h3>Basic Run Command</h3>
-                <div class="code-block">
-                    <code>docker run [OPTIONS] IMAGE [COMMAND]</code>
-                </div>
-
-                <h3>Common Examples</h3>
-                
-                <div class="example">
-                    <h4>Run Ubuntu Container</h4>
-                    <div class="code-block">
-                        <code>docker run -it ubuntu bash</code>
-                    </div>
-                    <p><code>-it</code> makes the container interactive with a terminal</p>
-                </div>
-
-                <div class="example">
-                    <h4>Run Web Server (Nginx)</h4>
-                    <div class="code-block">
-                        <code>docker run -d -p 8080:80 nginx</code>
-                    </div>
-                    <p><code>-d</code> runs in background, <code>-p 8080:80</code> maps port 8080 to container's port 80</p>
-                </div>
-
-                <div class="example">
-                    <h4>Run with Volume Mount</h4>
-                    <div class="code-block">
-                        <code>docker run -v /host/path:/container/path image-name</code>
-                    </div>
-                    <p>Mounts a directory from your host into the container</p>
-                </div>
-
-                <h3>Useful Run Options</h3>
-                <div class="options-table">
-                    <table>
-                        <tr>
-                            <th>Option</th>
-                            <th>Description</th>
-                        </tr>
-                        <tr>
-                            <td><code>-d</code></td>
-                            <td>Run in detached mode (background)</td>
-                        </tr>
-                        <tr>
-                            <td><code>-p</code></td>
-                            <td>Port mapping (host:container)</td>
-                        </tr>
-                        <tr>
-                            <td><code>-v</code></td>
-                            <td>Volume mounting</td>
-                        </tr>
-                        <tr>
-                            <td><code>--name</code></td>
-                            <td>Give container a custom name</td>
-                        </tr>
-                        <tr>
-                            <td><code>--rm</code></td>
-                            <td>Remove container when it stops</td>
-                        </tr>
-                    </table>
-                </div>
-            </section>
-
-            <section id="building-images" class="section">
-                <h2>Building Docker Images</h2>
-                
-                <h3>Dockerfile</h3>
-                <p>A Dockerfile is a text file containing instructions to build a Docker image. It's like a recipe for your container.</p>
-
-                <h3>Sample Dockerfile</h3>
-                <div class="code-block">
-<code># Use official Node.js runtime as base image
-FROM node:16
-
-# Set working directory in container
+                <h3>📄 The Dockerfile Explained</h3>
+                <div class="dockerfile-explanation">
+                    <div class="stage-box">
+                        <h4>🔧 Stage 1: Building the App</h4>
+                        <div class="code-block">
+                            <code>FROM node:24 AS builder
 WORKDIR /app
-
-# Copy package.json and package-lock.json
 COPY package*.json ./
-
-# Install dependencies
-RUN npm install
-
-# Copy application code
+RUN npm install -g @angular/cli && npm install
 COPY . .
-
-# Expose port 3000
-EXPOSE 3000
-
-# Command to run when container starts
-CMD ["npm", "start"]</code>
-                </div>
-
-                <h3>Build the Image</h3>
-                <div class="code-block">
-                    <code>docker build -t my-app:latest .</code>
-                </div>
-                <p><code>-t</code> tags the image with a name, <code>.</code> refers to current directory</p>
-
-                <h3>Common Dockerfile Instructions</h3>
-                <div class="dockerfile-instructions">
-                    <div class="instruction">
-                        <strong>FROM:</strong> Specifies base image
+RUN ng build --configuration=production</code>
+                        </div>
+                        <ul>
+                            <li><code>FROM node:24 AS builder</code> - Start with Node.js version 24, call this stage "builder"</li>
+                            <li><code>WORKDIR /app</code> - Set working directory inside container</li>
+                            <li><code>COPY package*.json ./</code> - Copy package files first (for better caching)</li>
+                            <li><code>RUN npm install...</code> - Install Angular CLI and dependencies</li>
+                            <li><code>COPY . .</code> - Copy all source code</li>
+                            <li><code>RUN ng build...</code> - Build the Angular app for production</li>
+                        </ul>
                     </div>
-                    <div class="instruction">
-                        <strong>WORKDIR:</strong> Sets working directory
-                    </div>
-                    <div class="instruction">
-                        <strong>COPY:</strong> Copies files from host to container
-                    </div>
-                    <div class="instruction">
-                        <strong>RUN:</strong> Executes commands during build
-                    </div>
-                    <div class="instruction">
-                        <strong>EXPOSE:</strong> Documents which ports the container uses
-                    </div>
-                    <div class="instruction">
-                        <strong>CMD:</strong> Default command when container starts
+                    
+                    <div class="stage-box">
+                        <h4>🌐 Stage 2: Serving the App</h4>
+                        <div class="code-block">
+                            <code>FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist/angular_first_app/browser /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]</code>
+                        </div>
+                        <ul>
+                            <li><code>FROM nginx:alpine</code> - Use lightweight NGINX web server</li>
+                            <li><code>COPY nginx.conf...</code> - Copy custom NGINX configuration</li>
+                            <li><code>COPY --from=builder...</code> - Copy built files from previous stage</li>
+                            <li><code>EXPOSE 80</code> - Tell Docker this container uses port 80</li>
+                            <li><code>CMD [...]</code> - Start NGINX when container runs</li>
+                        </ul>
                     </div>
                 </div>
-            </section>
-
-            <section id="docker-hub" class="section">
-                <h2>Docker Hub: Push and Pull Images</h2>
                 
-                <h3>What is Docker Hub?</h3>
-                <p>Docker Hub is a cloud-based registry service where you can store and share Docker images. It's like GitHub for Docker images.</p>
-
-                <h3>Creating an Account</h3>
-                <ol>
-                    <li>Go to <strong>hub.docker.com</strong></li>
-                    <li>Sign up for a free account</li>
-                    <li>Verify your email address</li>
-                </ol>
-
-                <h3>Login from Command Line</h3>
-                <div class="code-block">
-                    <code>docker login</code>
+                <div class="info-box">
+                    <h4>💡 Why Multi-Stage Build?</h4>
+                    <p>We use two stages because we need Node.js to build the Angular app, but we only need NGINX to serve it. This keeps the final image small and secure by excluding build tools from the production container.</p>
                 </div>
-                <p>Enter your Docker Hub username and password when prompted.</p>
-
-                <h3>Tagging Images for Docker Hub</h3>
-                <div class="code-block">
-                    <code>docker tag my-app:latest username/my-app:latest</code>
-                </div>
-                <p>Replace <code>username</code> with your Docker Hub username.</p>
-
-                <h3>Push Image to Docker Hub</h3>
-                <div class="code-block">
-                    <code>docker push username/my-app:latest</code>
-                </div>
-
-                <h3>Pull Image from Docker Hub</h3>
-                <div class="code-block">
-                    <code>docker pull username/my-app:latest</code>
-                </div>
-
-                <div class="tip">
-                    <h4>Pro Tip:</h4>
-                    <p>Use meaningful tags like <code>v1.0</code>, <code>production</code>, or <code>staging</code> instead of just <code>latest</code> for better version control.</p>
-                </div>
-            </section>
-
-            <section id="common-commands" class="section">
-                <h2>Common Docker Commands</h2>
                 
-                <div class="command-category">
-                    <h3>Image Commands</h3>
-                    <div class="command-list">
-                        <div class="command">
-                            <code>docker images</code>
-                            <span>List all images</span>
+                <h3>⚙️ The NGINX Configuration</h3>
+                <div class="code-block">
+                    <code>server {
+  listen 80;
+  server_name localhost;
+  root /usr/share/nginx/html;
+  index index.html;
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+}</code>
+                </div>
+                <p>This configuration ensures that Angular's routing works correctly by redirecting all requests to <code>index.html</code>.</p>
+            </div>
+        </section>
+
+        <section id="docker-hub" class="section">
+            <h2>🌐 Sharing on Docker Hub</h2>
+            <div class="content-box">
+                <h3>🔨 Building and Running Your Container</h3>
+                <div class="step-list">
+                    <div class="build-step">
+                        <h4>1. Build the Image</h4>
+                        <div class="code-block">
+                            <code>docker build -t angular-first-app .</code>
                         </div>
-                        <div class="command">
-                            <code>docker pull image-name</code>
-                            <span>Download an image</span>
+                        <p>This creates an image called "angular-first-app" using the Dockerfile in the current directory (.).</p>
+                    </div>
+                    
+                    <div class="build-step">
+                        <h4>2. Run the Container</h4>
+                        <div class="code-block">
+                            <code>docker run -p 8080:80 angular-first-app</code>
                         </div>
-                        <div class="command">
-                            <code>docker rmi image-name</code>
-                            <span>Remove an image</span>
-                        </div>
-                        <div class="command">
-                            <code>docker build -t name .</code>
-                            <span>Build image from Dockerfile</span>
-                        </div>
+                        <p>This starts a container and maps port 8080 on your computer to port 80 in the container.</p>
                     </div>
                 </div>
-
-                <div class="command-category">
-                    <h3>Container Commands</h3>
-                    <div class="command-list">
-                        <div class="command">
-                            <code>docker ps</code>
-                            <span>List running containers</span>
+                
+                <h3>📤 Pushing to Docker Hub</h3>
+                <div class="step-list">
+                    <div class="build-step">
+                        <h4>1. Login to Docker Hub</h4>
+                        <div class="code-block">
+                            <code>sudo docker login</code>
                         </div>
-                        <div class="command">
-                            <code>docker ps -a</code>
-                            <span>List all containers</span>
+                        <p>Enter your Docker Hub username and password.</p>
+                    </div>
+                    
+                    <div class="build-step">
+                        <h4>2. Tag Your Image</h4>
+                        <div class="code-block">
+                            <code>sudo docker tag angular-first-app YOUR_DOCKERHUB_USERNAME/angular-first-app</code>
                         </div>
-                        <div class="command">
-                            <code>docker stop container-id</code>
-                            <span>Stop a container</span>
+                        <p>This gives your image a name that includes your Docker Hub username.</p>
+                    </div>
+                    
+                    <div class="build-step">
+                        <h4>3. Push to Docker Hub</h4>
+                        <div class="code-block">
+                            <code>sudo docker push YOUR_DOCKERHUB_USERNAME/angular-first-app</code>
                         </div>
-                        <div class="command">
-                            <code>docker start container-id</code>
-                            <span>Start a stopped container</span>
-                        </div>
-                        <div class="command">
-                            <code>docker rm container-id</code>
-                            <span>Remove a container</span>
-                        </div>
-                        <div class="command">
-                            <code>docker exec -it container-id bash</code>
-                            <span>Access running container</span>
-                        </div>
+                        <p>This uploads your image to Docker Hub where others can access it.</p>
                     </div>
                 </div>
-
-                <div class="command-category">
-                    <h3>System Commands</h3>
-                    <div class="command-list">
-                        <div class="command">
-                            <code>docker system prune</code>
-                            <span>Clean up unused resources</span>
-                        </div>
-                        <div class="command">
-                            <code>docker logs container-id</code>
-                            <span>View container logs</span>
-                        </div>
-                        <div class="command">
-                            <code>docker info</code>
-                            <span>Display system information</span>
-                        </div>
+                
+                <div class="success-box">
+                    <h4>🎉 Success!</h4>
+                    <p>Now anyone in the world can run your Angular application with just one command:</p>
+                    <div class="code-block">
+                        <code>docker run -p 8080:80 YOUR_DOCKERHUB_USERNAME/angular-first-app</code>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="next-steps">
-                <h2>Next Steps</h2>
-                <p>Now that you understand the basics of Docker, here are some things to explore:</p>
-                <ul>
-                    <li>Learn about Docker Compose for multi-container applications</li>
-                    <li>Explore Docker networking and volumes</li>
-                    <li>Study container orchestration with Kubernetes</li>
-                    <li>Practice with different types of applications</li>
-                    <li>Learn about Docker security best practices</li>
-                </ul>
-            </section>
-        </div>
-    </main>
+        <section id="next-steps" class="section">
+            <h2>🎯 Next Steps</h2>
+            <div class="next-steps-grid">
+                <div class="next-step-card">
+                    <h3>📖 Learn More Commands</h3>
+                    <ul>
+                        <li><code>docker ps</code> - List running containers</li>
+                        <li><code>docker images</code> - List available images</li>
+                        <li><code>docker stop</code> - Stop a container</li>
+                        <li><code>docker rm</code> - Remove a container</li>
+                    </ul>
+                </div>
+                <div class="next-step-card">
+                    <h3>🔧 Explore Docker Compose</h3>
+                    <p>Learn to manage multi-container applications with docker-compose.yml files.</p>
+                </div>
+                <div class="next-step-card">
+                    <h3>🚀 Try More Examples</h3>
+                    <p>Containerize different types of applications: databases, APIs, microservices.</p>
+                </div>
+                <div class="next-step-card">
+                    <h3>📚 Best Practices</h3>
+                    <p>Learn about security, optimization, and production deployment strategies.</p>
+                </div>
+            </div>
+        </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Docker Documentation. This guide is designed to help beginners get started with Docker.</p>
-        </div>
-    </footer>
+        <footer>
+            <div class="footer-content">
+                <h3>🎓 Congratulations!</h3>
+                <p>You now understand the basics of Docker and have seen a real-world example of containerizing an Angular application. Keep practicing and exploring to become a Docker expert!</p>
+                
+                <div class="resources">
+                    <h4>📌 Helpful Resources</h4>
+                    <ul>
+                        <li><a href="https://docs.docker.com/" target="_blank">Official Docker Documentation</a></li>
+                        <li><a href="https://hub.docker.com/" target="_blank">Docker Hub</a></li>
+                        <li><a href="https://www.docker.com/play-with-docker" target="_blank">Play with Docker (Online Learning)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
